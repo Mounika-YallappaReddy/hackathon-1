@@ -9,10 +9,22 @@ function createCard(pokemon, ability, move, weight, pokeID) {
                     <p class="pokemon_moves"><b>Move : </b>${move}</p>
                     <p class="pokemon_weight"><b>Weight : </b>${weight}</p>
                 </div>
-    </div>   `
+    </div> `
+}
+function buttonDeatils() {
+    console.log('button');
+    const buttonDes = document.querySelector(".container");
+    buttonDes.innerHTML += `
+    <div class="button_des">
+            <button class="previous" onclick="previousPage()">Previous</button>
+            <button class="next" onclick="nextPage()"> Next </button>
+    </div>  `
+
 }
 function clearcontent() {
     document.querySelector(".container").innerHTML = "";
+    document.querySelector(".welcome_page").innerHTML = "";
+    document.querySelector(".start_button").innerHTML = "";
 }
 var k = 0;
 function fromStart() {
@@ -23,25 +35,27 @@ function fromStart() {
 function nextPage() {
     clearcontent();
     k++;
+    if(k>50){
+        k=0;
+    }
     getCardDeatils(k);
     console.log(k);
 }
 
 function previousPage() {
     clearcontent();
-    if (k <= 0) {
-        getCardDeatils(0);
-        console.log(0);
+    if (k<=0) {
+        k=50;
+        getCardDeatils(k);
+        console.log(k);
     }
     else {
-        getCardDeatils(k--);
+        k--;
+        getCardDeatils(k);
         console.log(k);
     }
 }
 async function getCardDeatils(p) {
-    if (p >= 5) {
-        fromStart();
-    }
     var ability_names = "";
     var move_name = "";
     for (let i = 1; i <= 10; i++) {
@@ -57,5 +71,6 @@ async function getCardDeatils(p) {
         ability_names = "";
         move_name = "";
     }
+    buttonDeatils();
 }
 getCardDeatils();
