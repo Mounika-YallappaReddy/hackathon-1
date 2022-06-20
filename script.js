@@ -35,7 +35,7 @@ function fromStart() {
 function nextPage() {
     clearcontent();
     k++;
-    if(k>50){
+    if(k>5){
         k=0;
     }
     getCardDeatils(k);
