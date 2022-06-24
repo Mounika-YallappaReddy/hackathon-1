@@ -1,7 +1,13 @@
-function createCard(pokemon, ability, move, weight, pokeID) {
+var k = 0;
+var q = 0;
+function clearcontent() {
+    document.querySelector(".container").innerHTML = "";
+}
+function createCard(pokemon, ability, move, weight, pokeID) 
+{
     const card = document.querySelector(".container");
     card.innerHTML += `
-    <div class=" pokemon_conatiner ">
+    <div class=" pokemon_conatiner " >
                 <img class="pokemon_img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokeID}.png" />
                 <div class="pokemon_content">
                     <h1 class="pokemon_name">${pokemon}</h1>
@@ -12,7 +18,6 @@ function createCard(pokemon, ability, move, weight, pokeID) {
     </div> `
 }
 function buttonDeatils() {
-    console.log('button');
     const buttonDes = document.querySelector(".container");
     buttonDes.innerHTML += `
     <div class="button_des">
@@ -21,40 +26,26 @@ function buttonDeatils() {
     </div>  `
 
 }
-function clearcontent() {
-    document.querySelector(".container").innerHTML = "";
-    document.querySelector(".welcome_page").innerHTML = "";
-    document.querySelector(".start_button").innerHTML = "";
-}
-var k = 0;
-function fromStart() {
-    clearcontent();
-    k = 0;
-    getCardDeatils(k);
-}
 function nextPage() {
     clearcontent();
     k++;
-    if(k>5){
-        k=0;
+    if (k > 5) {
+        k = 0;
     }
     getCardDeatils(k);
-    console.log(k);
 }
 
 function previousPage() {
     clearcontent();
-    if (k<=0) {
-        k=50;
-        getCardDeatils(k);
-        console.log(k);
+    if (k <= 0) {
+        k = 5;
     }
     else {
         k--;
-        getCardDeatils(k);
-        console.log(k);
     }
+    getCardDeatils(k);
 }
+var p=0;
 async function getCardDeatils(p) {
     var ability_names = "";
     var move_name = "";
@@ -73,4 +64,4 @@ async function getCardDeatils(p) {
     }
     buttonDeatils();
 }
-getCardDeatils();
+getCardDeatils(0);
