@@ -9,9 +9,9 @@ body{
     font-weight: bolder;
     font-size: xx-large;
     background:linear-gradient(to right, #f0e330, #1bdcfa);
-    background-clip: text;
+    background-clip: text; 
     -webkit-background-clip: text;
-    color: transparent;
+     color: transparent;
     display: flex;
     justify-content: center;
     margin-top: 60px;
